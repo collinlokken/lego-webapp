@@ -129,7 +129,7 @@ steps:
       - echo "server stopped"
 
   - name: setup
-    image: node:11
+    image: node:12
     when:
       event: [push]
     depends_on:
@@ -147,7 +147,7 @@ steps:
       - yarn --frozen-lockfile --cache-folder /tmp/cache
 
   - name: build_server
-    image: node:11
+    image: node:12
     when:
       event: [push]
       branch:
@@ -158,7 +158,7 @@ steps:
       - yarn build:server
 
   - name: build_client
-    image: node:11
+    image: node:12
     when:
       event: [push]
       branch:
@@ -169,7 +169,7 @@ steps:
       - yarn build:client
 
   - name: test
-    image: node:11
+    image: node:12
     when:
       event: [push]
     depends_on:
@@ -178,7 +178,7 @@ steps:
       - yarn test
 
   - name: lint
-    image: node:11
+    image: node:12
     when:
       event: [push]
     depends_on:
@@ -187,7 +187,7 @@ steps:
       - yarn lint
 
   - name: flow
-    image: node:11
+    image: node:12
     when:
       event: [push]
     depends_on:
@@ -196,7 +196,7 @@ steps:
       - yarn flow --quiet
 
   - name: install_cypress
-    image: node:11
+    image: node:12
     when:
       event: [push]
       branch:
@@ -209,7 +209,7 @@ steps:
       - yarn cypress install
 
   - name: ssr
-    image: node:11
+    image: node:12
     detach: true
     when:
       event: [push]
@@ -351,4 +351,4 @@ image_pull_secrets:
 
 ---
 kind: signature
-hmac: 0cfd195dbd86de598289a8ec09d336b20792889eb7095c4e78a42b5ef789732d
+hmac: bf3ddaae39ebf3f38895226f72da909e6c5129ffde07fabeaa0e3f67d9c0cc83
